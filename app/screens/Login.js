@@ -10,15 +10,6 @@ export default class Login extends Component {
     header: null
   };
 
-  // Imported for Native-Base
-  // Go here for more information about importing customed fonts
-  // https://docs.expo.io/versions/latest/guides/using-custom-fonts
-  async componentWillMount() {
-    await Expo.Font.loadAsync({
-      'Roboto': require('native-base/Fonts/Roboto.ttf'),
-      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
-    });
-  };
 
   render() {
     return (

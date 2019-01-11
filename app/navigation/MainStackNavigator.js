@@ -16,7 +16,8 @@ const firebaseConfig = {
   storageBucket: "fitness-app-3d4cd.appspot.com",
   messagingSenderId: "399198279886"
 };
-firebase.initializeApp(firebaseConfig);
+
+// firebase.initializeApp(firebaseConfig);
 
 const MainStackNavigation = createStackNavigator({
     Login: {
