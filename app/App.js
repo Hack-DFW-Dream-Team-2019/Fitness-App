@@ -4,6 +4,19 @@ import {View} from 'react-native';
 
 import AppNavigator from './navigation/AppNavigator';
 
+import * as firebase from 'firebase';
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBjo5v_7DazFSDzqoR6daYqtlxZ7KL0sn4",
+  authDomain: "fitness-app-3d4cd.firebaseapp.com",
+  databaseURL: "https://fitness-app-3d4cd.firebaseio.com",
+  projectId: "fitness-app-3d4cd",
+  storageBucket: "fitness-app-3d4cd.appspot.com",
+  messagingSenderId: "399198279886"
+};
+
+// firebase.initializeApp(firebaseConfig);
 // export default AppNavigator;
 
 export default class App extends React.Component{
@@ -11,7 +24,7 @@ export default class App extends React.Component{
     state = {
         fontLoaded: false,
     };
-    
+
     async componentDidMount() {
 
         await Font.loadAsync({
@@ -20,7 +33,7 @@ export default class App extends React.Component{
         });
 
         this.setState({ fontLoaded: true });
-        
+
     }
 
     render(){
