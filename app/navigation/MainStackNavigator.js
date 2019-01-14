@@ -1,9 +1,13 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
 
-import LoginScreen from '../screens/Login';
-import AuthScreen from '../screens/Auth';
-import RegisterScreen from '../screens/Register';
+import WelcomeScreen from '../screens/Welcome';
+
+import GetStartedScreen from '../screens/GettingStarted';
+
+import LoginScreen from '../screens/Authentication/Login';
+import RegisterScreen from '../screens/Authentication/Register';
+
 
 import * as firebase from 'firebase';
 
@@ -20,15 +24,19 @@ const firebaseConfig = {
 // firebase.initializeApp(firebaseConfig);
 
 const MainStackNavigation = createStackNavigator({
-    Login: {
-      screen: LoginScreen
-    },
-    Auth: {
-      screen: AuthScreen
-    },
-    Register: {
-      screen: RegisterScreen
-    }
-  });
+  Welcome: {
+    screen: WelcomeScreen
+  },
+  GettingStarted: {
+    screen: GetStartedScreen
+  },
+  Login: {
+    screen: LoginScreen
+  },
+  Register: {
+    screen: RegisterScreen
+  }
 
-  export default MainStackNavigation;
+});
+
+export default MainStackNavigation;

@@ -13,7 +13,7 @@ export default class Login extends Component {
   render() {
     return (
         <View style={style.container}>
-            <Text>This is the authentication screen!</Text>
+            <Text>This is the login screen!</Text>
         </View>
     );
   }
@@ -25,6 +25,6 @@ const style = StyleSheet.create({
     flexDirection: 'column',
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: '#AA3939',
+    backgroundColor: '#fff',
   }
 });
