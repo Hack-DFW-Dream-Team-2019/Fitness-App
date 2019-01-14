@@ -7,6 +7,8 @@ import GetStartedScreen from '../screens/GettingStarted';
 
 import LoginScreen from '../screens/Authentication/Login';
 import RegisterScreen from '../screens/Authentication/Register';
+import NewExercise from '../screens/Workouts/NewExercise';
+import EditExercise from '../screens/Workouts/EditExercise';
 
 
 const MainStackNavigation = createStackNavigator({
@@ -21,6 +23,12 @@ const MainStackNavigation = createStackNavigator({
   },
   Register: {
     screen: RegisterScreen
+  },
+  EditExercise: {
+    screen: EditExercise
+  },
+  NewExercise: {
+    screen: NewExercise
   }
 
 });
