@@ -60,48 +60,51 @@ constructor(props) {
           <Form>
             <Item>
               <Input
-               placeholder="Exercise Name",
+               placeholder="Exercise Name"
                onChangeText={(text) => this.setState({Name: text})}
               />
             </Item>
             <Item>
-              <Input placeholder="Category",
+              <Input placeholder="Category"
               onChangeText={(text) => this.setState({Category: text})}
               />
             </Item>
             <Item>
               <Input
-               placeholder="Reps",
+               placeholder="Reps"
                onChangeText={(text) => this.setState({Reps: text})}
               />
             </Item>
             <Item>
               <Input
-                placeholder="Sets",
+                placeholder="Sets"
                 onChangeText={(text) => this.setState({Sets: text})}
               />
             </Item>
             <Item>
               <Input
-                placeholder="Weight",
+                placeholder="Weight"
                 onChangeText={(text) => this.setState({Weight: text})}
               />
             </Item>
             <Item last>
               <Input
-                placeholder="Time Limit",
+                placeholder="Time Limit"
                 onChangeText={(text) => this.setState({Limit: text})}
               />
             </Item>
           </Form>
         </Content>
+
         <View>
           <TouchableOpacity
               style={style.button}
               onPress= { () => this.createExercise(this.state.Name) }
           >
           <Text style={style.buttonText}>Create this Exercise</Text>
+          </TouchableOpacity>
         </View>
+        
         <View>
           <TouchableOpacity
               style={style.button}
