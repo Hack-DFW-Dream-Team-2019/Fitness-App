@@ -1,6 +1,6 @@
 import React from 'react';
 import { Font} from 'expo';
-import {View} from 'react-native';
+import {View,  AsyncStorage} from 'react-native';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -33,8 +33,31 @@ export default class App extends React.Component{
         });
 
         this.setState({ fontLoaded: true });
-
+        
+        await this._storeData('workouts', JSON.stringify([]))
+        await this._storeData('excercises', JSON.stringify([]))
+    
     }
+
+    _storeData = async ( key , data) => {
+        try {
+            await AsyncStorage.setItem(key, data);
+        } catch (error) {
+            // Error saving data
+        }
+    }
+
+    _retrieveData = async (key) => {
+        try {
+          const value = await AsyncStorage.getItem(key);
+          if (value !== null) {
+            // We have data!!
+            console.log(value);
+          }
+         } catch (error) {
+           // Error retrieving data
+         }
+      }
 
     render(){
         return(

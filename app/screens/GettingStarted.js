@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Button, Container, Header, Content, Footer, View, Text, Icon } from 'native-base';
-import { Image, StyleSheet, TouchableOpacity} from 'react-native';
+import { Image, StyleSheet, TouchableOpacity,} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
