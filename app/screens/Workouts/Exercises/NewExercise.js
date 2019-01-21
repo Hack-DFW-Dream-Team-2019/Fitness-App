@@ -25,15 +25,33 @@ constructor(props) {
    exercise.Weight = this.state.Weight;
    exercise.Limit = this.state.Limit;
    _storeData (exercise, name);
+   console.log(exercise);
  }
 
- const _storeData = async (key, value) => {
+ showData (key) {
+   console.log(_retrieveData(key));
+ }
+
+ _storeData = async (key, value) => {
    try {
      await AsyncStorage.setItem(key, value);
    } catch (error) {
      console.log(error);
    }
  }
+
+ _retrieveData = async (key) => {
+  try {
+    const value = await AsyncStorage.getItem(key);
+    if (value !== null) {
+      console.log(value);
+    }
+    return value;
+   } catch (error) {
+     console.log(error);
+     return error;
+   }
+}
 
  render() {
     return (
@@ -77,11 +95,21 @@ constructor(props) {
             </Item>
           </Form>
         </Content>
-        <TouchableOpacity
-            style={style.button}
-            onPress= { createExercise (this.state.Name) }
-        >
-        <Text style={style.buttonText}>Create this Exercise</Text>
+        <View>
+          <TouchableOpacity
+              style={style.button}
+              onPress= { () => this.createExercise(this.state.Name) }
+          >
+          <Text style={style.buttonText}>Create this Exercise</Text>
+        </View>
+        <View>
+          <TouchableOpacity
+              style={style.button}
+              onPress= { () => this.showData(this.state.Name) }
+          >
+          <Text style={style.buttonText}>Log out data</Text>
+          </TouchableOpacity>
+        </View>
       </Container>
     );
   }
