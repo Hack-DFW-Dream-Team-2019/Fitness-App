@@ -16,7 +16,8 @@ constructor(props) {
    };
  }
 
- createExercise (name) {
+ createExercise () {
+   let exercises = JSON.parse(_retrieveData('exercises'));
    let exercise = {};
    exercise.Name = this.state.Name;
    exercise.Category = this.state.Name;
@@ -24,8 +25,9 @@ constructor(props) {
    exercise.Sets = this.state.Sets;
    exercise.Weight = this.state.Weight;
    exercise.Limit = this.state.Limit;
-   _storeData (exercise, name);
-   console.log(exercise);
+   exercises.push(exercise);
+   _storeData ('exercises', JSON.stringify(exercises));
+   console.log(exercises);
  }
 
  showData (key) {
@@ -99,12 +101,12 @@ constructor(props) {
         <View>
           <TouchableOpacity
               style={style.button}
-              onPress= { () => this.createExercise(this.state.Name) }
+              onPress= { () => this.createExercise() }
           >
           <Text style={style.buttonText}>Create this Exercise</Text>
           </TouchableOpacity>
         </View>
-        
+
         <View>
           <TouchableOpacity
               style={style.button}
