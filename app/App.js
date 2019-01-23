@@ -34,9 +34,11 @@ export default class App extends React.Component{
 
         this.setState({ fontLoaded: true });
         
-        await this._storeData('workouts', JSON.stringify([]))
-        await this._storeData('excercises', JSON.stringify([]))
-    
+        if(this._retrieveData('workouts') == null && this._retrieveData('exercises') == null){
+            await this._storeData('workouts', JSON.stringify([])) 
+            await this._storeData('excercises', JSON.stringify([]))
+        }
+        
     }
 
     _storeData = async ( key , data) => {
@@ -51,8 +53,9 @@ export default class App extends React.Component{
         try {
           const value = await AsyncStorage.getItem(key);
           if (value !== null) {
-            // We have data!!
-            console.log(value);
+            return value
+          }else{
+              return null
           }
          } catch (error) {
            // Error retrieving data
