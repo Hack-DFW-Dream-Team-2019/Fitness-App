@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Form, Item, Input } from 'native-base';
+import { Container, Header, Content, View, Form, Item, Input } from 'native-base';
 import { Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class EditExercise extends Component {
@@ -52,7 +52,7 @@ const style = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        
+
         marginVertical: 10,
         alignItems: 'center',
         minWidth: 200,

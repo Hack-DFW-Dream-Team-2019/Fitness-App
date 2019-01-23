@@ -50,7 +50,12 @@ export default class Login extends Component {
 						<Text>Beautiful</Text>
 					</View>
 					<View style={style.slide}>
-						<Text>And simple</Text>
+						<TouchableOpacity
+								style={style.button}
+								onPress= { () => this.props.navigation.navigate('NewExercise') }
+						>
+						<Text>New Exercise</Text>
+						</TouchableOpacity>
 					</View>
 				</Swiper>
 			</View>
@@ -66,6 +71,17 @@ const style = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: '#fff',
   },
+	button: {
+
+			marginVertical: 10,
+			alignItems: 'center',
+			minWidth: 200,
+			paddingVertical: 20,
+			borderRadius: 5,
+			borderWidth: 1,
+			borderColor: '#707070'
+
+	},
   header:{
 	alignItems: 'center',
     marginTop: 15,
