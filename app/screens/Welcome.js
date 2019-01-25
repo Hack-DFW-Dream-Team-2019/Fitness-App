@@ -1,15 +1,22 @@
 import React, {Component} from "react";
-import { Button, Container, Header, Content, Footer, View, Text } from 'native-base';
-import { Image, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text } from 'native-base';
+import { StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class Welcome extends Component{
 
-    static navigationOptions = {
-        header: null
+    // Navigation Options
+	static navigationOptions = {
+		header: null
     };
+    
+    _signInAsync = async () => {
+        await AsyncStorage.setItem('userToken', 'true');
+        this.props.navigation.navigate('Home');
+      };
 
     render(){
         return(
+            
             <View style={style.container}>
                 <View style={style.header}>
                     <Text style={{fontSize: 40}}>Muscles</Text>
@@ -17,18 +24,19 @@ export default class Welcome extends Component{
                 <View style={style.body}>
                     <TouchableOpacity
                         style={style.button}
-                        onPress= { () => this.props.navigation.navigate('GettingStarted') }
+                        onPress= { () => this.props.navigation.navigate('Home') }
                     >
                         <Text style={style.buttonText}>Get started</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={style.button}
-                        onPress= { () => this.props.navigation.navigate('Login') }
+                        onPress= { () => this.setState({modalVisible: false}) }
                     >
                         <Text style={style.buttonText}>Connect</Text>
                     </TouchableOpacity>
                 </View>
             </View>
+
         )
     }
 }

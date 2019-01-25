@@ -6,3 +6,4 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.json
+node_modules

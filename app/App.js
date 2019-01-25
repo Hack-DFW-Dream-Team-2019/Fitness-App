@@ -1,6 +1,6 @@
 import React from 'react';
 import { Font} from 'expo';
-import {View,  AsyncStorage} from 'react-native';
+import {View,  AsyncStorage, SafeAreaView} from 'react-native';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -33,17 +33,16 @@ export default class App extends React.Component{
         });
 
         this.setState({ fontLoaded: true });
-        
+         
         if(this._retrieveData('workouts') == null && this._retrieveData('exercises') == null){
             await this._storeData('workouts', JSON.stringify([])) 
             await this._storeData('excercises', JSON.stringify([]))
         }
-        
     }
 
     _storeData = async ( key , data) => {
         try {
-            await AsyncStorage.setItem(key, data);
+           await AsyncStorage.setItem(key, data);    
         } catch (error) {
             // Error saving data
         }
@@ -65,13 +64,13 @@ export default class App extends React.Component{
     render(){
         return(
             <View style={{flex: 1}}>
-              {
-                  this.state.fontLoaded ? (
+            {
+                this.state.fontLoaded ? (
 
-                      <AppNavigator/>
+                    <AppNavigator/>
 
-                  ) : null
-              }
+                ) : null
+            }
             </View>
         )
     }
