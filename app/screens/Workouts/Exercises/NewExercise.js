@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Form, Item, Input } from 'native-base';
+import { Container, Header, Content, Form, View, Text, Item, Input } from 'native-base';
 import { Image, StyleSheet, TouchableOpacity} from 'react-native';
+import { AsyncStorage } from "react-native";
 
 export default class EditExercise extends Component {
 
@@ -16,8 +17,9 @@ constructor(props) {
    };
  }
 
- createExercise () {
-   let exercises = JSON.parse(_retrieveData('exercises'));
+ async createExercise () {
+   let exercises = await this._retrieveData('exercises');
+   exercises = JSON.parse(exercises);
    let exercise = {};
    exercise.Name = this.state.Name;
    exercise.Category = this.state.Name;
@@ -26,19 +28,19 @@ constructor(props) {
    exercise.Weight = this.state.Weight;
    exercise.Limit = this.state.Limit;
    exercises.push(exercise);
-   _storeData ('exercises', JSON.stringify(exercises));
-   console.log(exercises);
+   await this._storeData('exercises', JSON.stringify(exercises));
  }
 
- showData (key) {
-   console.log(_retrieveData(key));
- }
+ async showData (key) {
+   let exercises = await this._retrieveData('exercises');
+   exercises = JSON.parse(exercises);
+   console.log(exercises);
+  }
 
  _storeData = async (key, value) => {
    try {
      await AsyncStorage.setItem(key, value);
    } catch (error) {
-     console.log(error);
    }
  }
 
@@ -46,11 +48,9 @@ constructor(props) {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
-      console.log(value);
     }
     return value;
    } catch (error) {
-     console.log(error);
      return error;
    }
 }
@@ -112,7 +112,7 @@ constructor(props) {
               style={style.button}
               onPress= { () => this.showData(this.state.Name) }
           >
-          <Text style={style.buttonText}>Log out data</Text>
+          <Text style={style.buttonText}>Log out data (dev)</Text>
           </TouchableOpacity>
         </View>
       </Container>
