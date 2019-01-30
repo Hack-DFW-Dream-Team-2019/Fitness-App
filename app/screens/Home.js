@@ -45,7 +45,7 @@ export default class Login extends Component {
 				content={<SideBar/>}
 				style={{ zIndex: 100 }}
 				onClose={() => closeDrawer()} >
-				
+
 				<SafeAreaView style={{flex: 1}}>
 					<View style={{flex: 1}}>
 
@@ -68,9 +68,9 @@ export default class Login extends Component {
 							<View style={style.slide}>
 								<TouchableOpacity
 										style={style.button}
-										onPress= { () => this.props.navigation.navigate('NewExercise') }
+										onPress= { () => this.props.navigation.navigate('NewWorkout') }
 								>
-								<Text>New Exercise</Text>
+								<Text>New Workout</Text>
 								</TouchableOpacity>
 							</View>
 						</Swiper>
