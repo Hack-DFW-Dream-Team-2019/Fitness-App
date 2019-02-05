@@ -1,7 +1,6 @@
 
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import HomeStack from './HomeStackNavigator.js';
 import TabNavigator from './TabNavigator';
 import AuthStack from './AuthStackNavigator.js';
 

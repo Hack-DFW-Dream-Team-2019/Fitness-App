@@ -3,7 +3,7 @@ import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import HomeStack from './HomeStackNavigator'
+import HomeStack from './WorkoutsStackNavigator'
 import TrackScreen from '../screens/PathTracker'
 
 
