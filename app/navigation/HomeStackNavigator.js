@@ -4,7 +4,7 @@ import HomeScreen from '../screens/Home';
 import NewExercise from '../screens/Workouts/Exercises/NewExercise';
 import EditExercise from '../screens/Workouts/Exercises/EditExercise';
 import NewWorkout from '../screens/Workouts/NewWorkout';
-import ExerciseList from '../screens/Workouts/ExerciseList';
+import ExerciseList from '../screens/Workouts/Exercises/ExerciseList';
 
 const HomeStackNavigation = createStackNavigator({
 

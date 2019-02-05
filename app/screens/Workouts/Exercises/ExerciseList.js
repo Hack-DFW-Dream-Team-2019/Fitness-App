@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, View, Form, Item, Input, Accordion } from 'native-base';
 import { Image, StyleSheet, TouchableOpacity} from 'react-native';
+import { AsyncStorage } from "react-native";
 
 export default class ExerciseList extends Component {
   constructor(props) {
@@ -13,12 +14,42 @@ export default class ExerciseList extends Component {
    async getExercises () {
      let exercises = await this._retrieveData('exercises');
      exercises = JSON.parse(exercises);
+     exercises.forEach( (exercise) => {
+       exercise.title = exercise.Name;
+       exercise.content =
+        `
+        Category: ${exercise.Category}
+        Repetitions: ${exercise.Reps}
+        Sets: ${exercise.Reps}
+        Time Limit: ${exercise.Limit}
+        Weight: ${exercise.Weight}
+        `
+     });
      this.setState({dataArray:exercises});
      console.log('Completed:', this.state.dataArray);
    }
 
    async componentDidMount() {
-       await getExercises();
+       await this.getExercises();
+   }
+
+
+    _storeData = async (key, value) => {
+      try {
+        await AsyncStorage.setItem(key, value);
+      } catch (error) {
+      }
+    }
+
+    _retrieveData = async (key) => {
+     try {
+       const value = await AsyncStorage.getItem(key);
+       if (value !== null) {
+       }
+       return value;
+      } catch (error) {
+        console.log(error);
+      }
    }
 
   render() {
@@ -26,7 +57,7 @@ export default class ExerciseList extends Component {
       <Container>
         <Header />
         <Content padder>
-          <Accordion dataArray={dataArray} expanded={0}/>
+          <Accordion dataArray={this.state.dataArray} expanded={0}/>
         </Content>
       </Container>
     );
