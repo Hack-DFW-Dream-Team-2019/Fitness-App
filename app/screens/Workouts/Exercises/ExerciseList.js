@@ -26,7 +26,6 @@ export default class ExerciseList extends Component {
         `
      });
      this.setState({dataArray:exercises});
-     console.log('Completed:', this.state.dataArray);
    }
 
    async componentDidMount() {
@@ -64,7 +63,7 @@ export default class ExerciseList extends Component {
       </Text>
       <TouchableOpacity
           style={style.button}
-          onPress= { () => console.log('added!') }
+          onPress= { () => console.log('Add button clicked!') }
       >
       <Text>Add to Workout</Text>
       </TouchableOpacity>
