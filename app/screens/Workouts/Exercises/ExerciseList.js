@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, View, Form, Item, Input, Accordion } from 'native-base';
+import { Container, Header, Content, View, Form, Item, Input, Accordion, Text } from 'native-base';
 import { Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { AsyncStorage } from "react-native";
 
@@ -33,7 +33,6 @@ export default class ExerciseList extends Component {
        await this.getExercises();
    }
 
-
     _storeData = async (key, value) => {
       try {
         await AsyncStorage.setItem(key, value);
@@ -52,48 +51,67 @@ export default class ExerciseList extends Component {
       }
    }
 
+   _renderContent(item) {
+    return (
+    <Container>
+      <Text
+        style={{
+          backgroundColor: "#e3f1f1",
+          padding: 10,
+        }}
+      >
+        {item.content}
+      </Text>
+      <TouchableOpacity
+          style={style.button}
+          onPress= { () => console.log('added!') }
+      >
+      <Text>Add to Workout</Text>
+      </TouchableOpacity>
+    </Container>
+    );
+  }
+
   render() {
     return (
       <Container>
         <Header />
         <Content padder>
-          <Accordion dataArray={this.state.dataArray} expanded={0}/>
+          <Accordion
+           dataArray={this.state.dataArray}
+           renderContent={this._renderContent}
+          />
         </Content>
       </Container>
     );
   }
 }
 
-// const style = StyleSheet.create({
-//     container: {
-//       flex: 1,
-//       flexDirection: 'column',
-//       alignItems: "center",
-//       justifyContent: "center",
-//     },
-//     header: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//     },
-//     body: {
-//         flex: 2,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//     },
-//     button: {
-//
-//         marginVertical: 10,
-//         alignItems: 'center',
-//         minWidth: 200,
-//         paddingVertical: 20,
-//         borderRadius: 5,
-//         borderWidth: 1,
-//         borderColor: '#707070'
-//
-//     },
-//     buttonText:{
-//         textTransform: 'uppercase',
-//         color: "#707070",
-//     }
-// });
+const style = StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'column',
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    header: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button: {
+
+        marginVertical: 10,
+        alignItems: 'center',
+        minWidth: 200,
+        paddingVertical: 20,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#707070'
+
+    },
+    buttonText:{
+        textTransform: 'uppercase',
+        color: "#707070",
+    }
+});
