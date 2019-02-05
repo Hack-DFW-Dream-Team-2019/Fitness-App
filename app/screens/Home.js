@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { Drawer, Button, Container, Header, Content, Footer, View, Text, Icon } from 'native-base';
 import { Image, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 
+import * as firebase from 'firebase';
+
 import Swiper from 'react-native-swiper';
 import SideBar from '../components/SideBar'
 
@@ -12,9 +14,14 @@ export default class Login extends Component {
 		header: null
 	};
 
+	componentDidMount(){
+		console.log(firebase.auth().currentUser.email)
+	}
+
 	constructor(props){
 		super(props)
 		this.state = {
+			currentUser: null 
 		}
 	}
 
@@ -49,7 +56,7 @@ export default class Login extends Component {
 				<SafeAreaView style={{flex: 1}}>
 					<View style={{flex: 1}}>
 
-						<View style={style.header}>
+						<View style={style.topbar}>
 							<TouchableOpacity
 								style={style.icon}
 								onPress = {() => {openDrawer()}}
@@ -89,7 +96,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: '#fff',
   },
-  header:{
+  topbar:{
 	alignItems: 'center',
     padding: 20
   },

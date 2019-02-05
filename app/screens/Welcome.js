@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { View, Text } from 'native-base';
 import { StyleSheet, TouchableOpacity} from 'react-native';
 
+import * as firebase from 'firebase';
+
 export default class Welcome extends Component{
 
     // Navigation Options
@@ -19,7 +21,7 @@ export default class Welcome extends Component{
             
             <View style={style.container}>
                 <View style={style.header}>
-                    <Text style={{fontSize: 40}}>Muscles</Text>
+                    <Text style={{fontSize: 40, color: '#707070'}}>Muscles</Text>
                 </View>
                 <View style={style.body}>
                     <TouchableOpacity
@@ -30,7 +32,7 @@ export default class Welcome extends Component{
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={style.button}
-                        onPress= { () => this.setState({modalVisible: false}) }
+                        onPress= { () => this.props.navigation.navigate('login') }
                     >
                         <Text style={style.buttonText}>Connect</Text>
                     </TouchableOpacity>

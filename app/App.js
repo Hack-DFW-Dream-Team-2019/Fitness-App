@@ -1,3 +1,5 @@
+require("firebase/firestore");
+
 import React from 'react';
 import { Font} from 'expo';
 import {View,  AsyncStorage, SafeAreaView} from 'react-native';
@@ -16,8 +18,7 @@ const firebaseConfig = {
   messagingSenderId: "399198279886"
 };
 
-// firebase.initializeApp(firebaseConfig);
-// export default AppNavigator;
+firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component{
 
