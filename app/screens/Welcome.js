@@ -8,7 +8,7 @@ export default class Welcome extends Component{
 	static navigationOptions = {
 		header: null
     };
-    
+
     _signInAsync = async () => {
         await AsyncStorage.setItem('userToken', 'true');
         this.props.navigation.navigate('Home');
@@ -16,7 +16,7 @@ export default class Welcome extends Component{
 
     render(){
         return(
-            
+
             <View style={style.container}>
                 <View style={style.header}>
                     <Text style={{fontSize: 40}}>Muscles</Text>
@@ -59,7 +59,7 @@ const style = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        
+
         marginVertical: 10,
         alignItems: 'center',
         minWidth: 200,
@@ -74,4 +74,3 @@ const style = StyleSheet.create({
         color: "#707070",
     }
 });
-  
