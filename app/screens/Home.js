@@ -73,6 +73,14 @@ export default class Login extends Component {
 								<Text>New Workout</Text>
 								</TouchableOpacity>
 							</View>
+							<View style={style.slide}>
+								<TouchableOpacity
+										style={style.button}
+										onPress= { () => this.props.navigation.navigate('ExerciseList') }
+								>
+								<Text>Exercise List (Dev only!)</Text>
+								</TouchableOpacity>
+							</View>
 						</Swiper>
 					</View>
 				</SafeAreaView>
