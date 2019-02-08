@@ -14,10 +14,6 @@ export default class Login extends Component {
 		header: null
 	};
 
-	componentDidMount(){
-		console.log(firebase.auth().currentUser.email)
-	}
-
 	constructor(props){
 		super(props)
 		this.state = {
